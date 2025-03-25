@@ -38,10 +38,11 @@ const SignUpPage = () => {
               </p>
             </div>
           </div>
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-medium">Full name</span>
+                <span className="label-text font-medium">Full Name</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -126,7 +127,7 @@ const SignUpPage = () => {
             </button>
           </form>
 
-            <div className="text-center">
+          <div className="text-center">
             <p className="text-base-content/60">
               Already have an account?{" "}
               <Link to="/login" className="link link-primary">
@@ -135,13 +136,14 @@ const SignUpPage = () => {
             </p>
           </div>
         </div>
-
-        {/* right side */}
-        <AuthImagePattern 
-        title = "Join our community"
-        subtitle = "Connect with friends, share momemnts and stay in touch with your loved ones"
-        />
       </div>
+
+      {/* right side */}
+
+      <AuthImagePattern
+        title="Join our community"
+        subtitle="Connect with friends, share moments, and stay in touch with your loved ones."
+      />
     </div>
   );
 };
