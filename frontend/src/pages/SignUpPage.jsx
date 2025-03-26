@@ -3,6 +3,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import AuthImagePattern from "../components/AuthImagePattern";
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,9 +14,22 @@ const SignUpPage = () => {
   });
   const { signup, isSigningUp } = useAuthStore();
 
-  const validateForm = () => {};
+  const validateForm = () => {
+    if (!formData.fullName || !formData.email || !formData.password) {
+      return toast.error("Please fill all the fields");
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      return toast.error("Please enter a valid email address");
+    }
+    if (formData.password.length < 8){
+      return toast.error("Password must be atleast 8 characters long");
+    }
+    return true;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const success = validateForm();
+    if (success) signup(formData);
   };
 
   return (
