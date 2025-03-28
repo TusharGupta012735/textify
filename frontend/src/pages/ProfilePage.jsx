@@ -10,13 +10,12 @@ const ProfilePage = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // using reader to convert the file as base 64 url and then display it using state 
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
-      const base64Image = reader.result;
-      setSelectedImg(base64Image);
-      await updateProfile({ profilePic: base64Image });
+      const base64Data = reader.result.split(",")[1];
+      setSelectedImg(reader.result);
+      await updateProfile({ profilePic: base64Data });
     };
   };
 
