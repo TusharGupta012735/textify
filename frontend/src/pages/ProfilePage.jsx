@@ -13,9 +13,9 @@ const ProfilePage = () => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
-      const base64Data = reader.result.split(",")[1];
-      setSelectedImg(reader.result);
-      await updateProfile({ profilePic: base64Data });
+      const base64Image = reader.result;
+      setSelectedImg(base64Image);
+      await updateProfile({ profilePic: base64Image });
     };
   };
 
@@ -37,8 +37,6 @@ const ProfilePage = () => {
                 alt="Profile"
                 className="size-32 rounded-full object-cover border-4 "
               />
-
-              {/* adds a camera icon in the profile circle which can be clicked to open input as the input doesnt have a body by itself so label acts as the medium */}
               <label
                 htmlFor="avatar-upload"
                 className={`
