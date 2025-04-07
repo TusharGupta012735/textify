@@ -1,7 +1,9 @@
 @import "tailwindcss";
-@plugin "daisyui";
 .lucide-icon {
   display: inline-block;
   vertical-align: middle;
   overflow: visible;
+}
+@plugin "daisyui" {
+  themes : all;
 }

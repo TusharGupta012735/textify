@@ -45,7 +45,6 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: "Internal Server Errror" });
   }
 };
-
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
