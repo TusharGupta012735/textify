@@ -1,6 +1,7 @@
 import express from "express";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
+import groupRoutes from "./routes/group.route.js";
 import dotenv from "dotenv";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
@@ -20,15 +21,15 @@ app.use(
 // app.use(express.urlencoded({ limit: "10mb", extended: true }));
 // app.use(express.raw({ type: "application/octet-stream", limit: "20mb" }));
 
-
 const PORT = process.env.port || 5001;
 
 app.get("/", (req, res) => {
-  res.send("Welcome to backend server")
-})
+  res.send("Welcome to backend server");
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.use("/api/groups", groupRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
