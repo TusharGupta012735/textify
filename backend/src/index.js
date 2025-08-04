@@ -23,6 +23,10 @@ app.use(
 
 const PORT = process.env.port || 5001;
 
+app.get("/", (req, res) => {
+  res.send("Welcome to backend server")
+})
+
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
