@@ -28,8 +28,8 @@ export const createGroup = async (req, res) => {
 export const getUserGroups = async (req, res) => {
   try {
     const groups = await Group.find({ members: req.user._id })
-      .populate("admin", "username fullName")
-      .populate("members", "username fullName");
+      .populate("admin", "fullName")
+      .populate("members", "fullName");
 
     res.status(200).json(groups);
   } catch (error) {
@@ -60,8 +60,8 @@ export const addMember = async (req, res) => {
     await group.save();
 
     const updatedGroup = await Group.findById(groupId)
-      .populate("admin", "username fullName")
-      .populate("members", "username fullName");
+      .populate("admin", "fullName")
+      .populate("members", "fullName");
 
     res.status(200).json(updatedGroup);
   } catch (error) {
@@ -96,8 +96,8 @@ export const removeMember = async (req, res) => {
     await group.save();
 
     const updatedGroup = await Group.findById(groupId)
-      .populate("admin", "username fullName")
-      .populate("members", "username fullName");
+      .populate("admin", "fullName")
+      .populate("members", "fullName");
 
     res.status(200).json(updatedGroup);
   } catch (error) {
@@ -135,7 +135,7 @@ export const sendGroupMessage = async (req, res) => {
 
     const populatedGroup = await Group.findById(groupId).populate(
       "messages.sender",
-      "username fullName"
+      "fullName"
     );
 
     const sentMessage =
